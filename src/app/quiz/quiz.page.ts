@@ -7,6 +7,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons,
 import { TriviaService } from '../services/trivia.service'; // trivia service
 import { Router } from '@angular/router'; // router
 import { HttpClient } from '@angular/common/http'; // http client
+import { ScoreService } from '../services/score.service'; // score service
 
 
 @Component({
@@ -27,7 +28,7 @@ export class QuizPage implements OnInit {
   index: any;
 
   // creating an instance of the trivia service 
-  constructor(private triviaService: TriviaService, private httpClient:HttpClient, private router: Router) { }
+  constructor(private triviaService: TriviaService, private httpClient:HttpClient, private router: Router, private scoreService: ScoreService) { }
 
   ngOnInit() {
     this.triviaService.getAllQuestions().subscribe((data) => {
@@ -56,8 +57,9 @@ export class QuizPage implements OnInit {
   } // nextQuestion
 
   // finsih quiz
-  finishQuiz()
+  async finishQuiz()
   {
+    await this.scoreService.saveScore(this.score); // saving the score
     this.router.navigate(['/result', { score: this.score}]);
   } // finishQuiz
 }

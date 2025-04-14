@@ -1,0 +1,30 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonButton, IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonText } from '@ionic/angular/standalone';
+import { ScoreService } from '../services/score.service'; // score service
+
+@Component({
+  selector: 'app-result',
+  templateUrl: './result.page.html',
+  styleUrls: ['./result.page.scss'],
+  standalone: true,
+  imports: [IonText, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonItem, IonList, IonButton, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+})
+export class ResultPage implements OnInit {
+  // variables
+  scores: any[] = []; // array of type any
+
+  // creating an instance of the score service
+  constructor(private scoreService: ScoreService) { }
+
+  ngOnInit() {
+    this.loadScores();
+  }
+
+  async loadScores()
+  {
+    this.scores = await this.scoreService.getScores();
+  } // loadScores
+
+}

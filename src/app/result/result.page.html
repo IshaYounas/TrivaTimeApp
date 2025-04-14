@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Result</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div *ngIf="scores.length > 0 else noScores">
+  <ion-list>
+    <ion-item *ngFor="let s of scores">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Score: {{s.score}}</ion-card-title>
+          <ion-card-subtitle>{{s.date}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>Location:</p>
+          <p>Latitude: {{s.location.lat}}</p>
+          <p>Logitude: {{s.location.lon}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</div>
+
+<ng-template #noScores>
+  <ion-text>No quiz results found</ion-text>
+</ng-template>
+</ion-content>

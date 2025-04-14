@@ -23,7 +23,7 @@ export class ScoreService {
     // newScore array
     const newScore = {score: score,
       date: new Date().toDateString(),
-      loctaion:
+      location:
       {
         lat: position.coords.latitude,
         lon: position.coords.longitude
