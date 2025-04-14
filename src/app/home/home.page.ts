@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router'; // importing router
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonButton, IonHeader, IonToolbar, IonTitle, IonContent, RouterModule],
+  imports: [RouterModule, IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
   constructor() {}
