@@ -9,6 +9,8 @@
 
 <ion-content [fullscreen]="true">
 <div *ngIf="scores.length > 0 else noScores">
+  <ion-button color="danger" (click)="clearScores()">Clear Scores></ion-button>
+  
   <ion-list>
     <ion-item *ngFor="let s of scores"> <!-- using ngFor -->
 

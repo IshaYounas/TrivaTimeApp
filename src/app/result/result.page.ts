@@ -28,4 +28,9 @@ export class ResultPage implements OnInit {
     this.scores = await this.scoreService.getScores();
   } // loadScores
 
+  async clearScores()
+  {
+    await this.scoreService.clearAllScores();
+    this.scores = [];
+  } // clearScores
 }

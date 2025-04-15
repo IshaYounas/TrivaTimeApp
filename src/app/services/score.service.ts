@@ -56,4 +56,9 @@ export class ScoreService {
           return [];
         } // else
     } // getScores
+
+    async clearAllScores()
+    {
+      await Preferences.remove({key: 'scores' }); 
+    } // clearAllScores
 }
