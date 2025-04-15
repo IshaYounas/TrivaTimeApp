@@ -25,7 +25,10 @@ export class ResultPage implements OnInit {
   async loadScores()
   {
     // using the score service to get the scores
-    this.scores = await this.scoreService.getScores();
+   this.scoreService.getScores().then((res) => 
+    {
+      this.scores = res;
+    });
   } // loadScores
 
   async clearScores()

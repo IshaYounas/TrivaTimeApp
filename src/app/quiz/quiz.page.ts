@@ -26,6 +26,8 @@ export class QuizPage implements OnInit {
   selectedAnswer : string = "";
   isQuizFinished: boolean = false;
   index: any;
+  startTime: number = 0;
+  elapsedTime: string = "";
 
   // creating an instance of the trivia service 
   constructor(private triviaService: TriviaService, private httpClient:HttpClient, private router: Router, private scoreService: ScoreService) { }
@@ -35,6 +37,7 @@ export class QuizPage implements OnInit {
     this.triviaService.getAllQuestions().subscribe((data) => {
       const allQuestions = data.easyQuestions.concat(data.mediumHardQuestions); // combining the wuestions
       this.questions = this.triviaService.decodeQuestions(allQuestions);
+      this.startTime = Date.now();
     });
   }
 
@@ -61,6 +64,10 @@ export class QuizPage implements OnInit {
   // finsih quiz
   async finishQuiz()
   {
+    // calculating the time taken to complete the quiz
+    const timeTaken = Date.now() - this.startTime;
+    this.elapsedTime = (timeTaken / 1000).toFixed(2) + ' seconds';
+
     // using the score service
     await this.scoreService.saveScore(this.score); // saving the score
     this.router.navigate(['/result', { score: this.score}]); // nagivating back to the results page

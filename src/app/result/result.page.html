@@ -18,10 +18,12 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>Score: {{s.score}}</ion-card-title>
-          <ion-card-subtitle>{{s.date}}</ion-card-subtitle>
         </ion-card-header>
-
         <ion-card-content>
+
+          <p *ngIf="s.time">Time Taken {{s.timeTaken}} </p>
+          <p>Date & Time: {{s.dateTime}}</p>
+
           <!-- displaying the exact location -->
           <p>Latitude: {{s.location.lat}}</p>
           <p>Logitude: {{s.location.lon}}</p>
