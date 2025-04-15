@@ -32,7 +32,8 @@ export class QuizPage implements OnInit {
 
   ngOnInit() {
     this.triviaService.getAllQuestions().subscribe((data) => {
-      this.questions = [...data.easyQuestions, ...data.mediumHardQuestions] // combining the wuestions
+      const allQuestions = data.easyQuestions.concat(data.mediumHardQuestions); // combining the wuestions
+      this.questions = this.triviaService.decodeQuestions(allQuestions);
     });
   }
 

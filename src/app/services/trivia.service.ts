@@ -37,4 +37,21 @@ export class TriviaService {
         mediumHardQuestions:mediumHard.results}))
       );
   } // getAllQuestions
+
+  decodeHtml(text: string): string
+  {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = text;
+    return txt.value;
+  } // decodeHtml
+
+  decodeQuestions(questions: any[]): any[]
+  {
+    return questions.map(q => ({
+      ...q,
+      question: this.decodeHtml(q.question),
+      correct_answer : this.decodeHtml(q.correct_answer),
+      incorrect_answers: q.incorrect_answers.map((a: string) => this.decodeHtml(a))
+    }));
+  } // decodeQuestions
 }
