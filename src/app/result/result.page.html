@@ -10,7 +10,9 @@
 <ion-content [fullscreen]="true">
 <div *ngIf="scores.length > 0 else noScores">
   <ion-list>
-    <ion-item *ngFor="let s of scores">
+    <ion-item *ngFor="let s of scores"> <!-- using ngFor -->
+
+      <!-- card layout -->
       <ion-card>
         <ion-card-header>
           <ion-card-title>Score: {{s.score}}</ion-card-title>
@@ -18,7 +20,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <p>Location:</p>
+          <!-- displaying the exact location -->
           <p>Latitude: {{s.location.lat}}</p>
           <p>Logitude: {{s.location.lon}}</p>
         </ion-card-content>

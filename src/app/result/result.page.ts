@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // for ngFor
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonButton, IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonText } from '@ionic/angular/standalone';
 import { ScoreService } from '../services/score.service'; // score service
@@ -24,6 +24,7 @@ export class ResultPage implements OnInit {
 
   async loadScores()
   {
+    // using the score service to get the scores
     this.scores = await this.scoreService.getScores();
   } // loadScores
 

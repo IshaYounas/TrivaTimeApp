@@ -8,15 +8,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<div *ngIf="questions.length > 0">
+  <!-- making sure the 15 questions are loaded -->
+<div *ngIf="questions.length > 0"> 
   <h2>Question {{currentIndex + 1 }} / {{ questions.length }}</h2>
+  <!-- card format -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title> {{ questions[currentIndex].question }} </ion-card-title>
+      <ion-card-title> {{ questions[currentIndex].question }} </ion-card-title> <!-- current question number -->
     </ion-card-header>
 
     <ion-card-content>
           <ion-radio-group [(ngModel)]="selectedAnswer">
+           
+            <!-- joining incorrect & correct answers -->
             <ion-item *ngFor="let answer of questions[currentIndex]?.incorrect_answers.concat(questions[currentIndex]?.correct_answer); let i of index">
               <ion-label> {{answer}} </ion-label>
               <ion-radio slot="start" [value]="answer"></ion-radio>

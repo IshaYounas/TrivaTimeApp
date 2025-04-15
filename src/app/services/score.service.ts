@@ -12,17 +12,17 @@ export class ScoreService {
   async saveScore(score: number)
   {
     const position = await Geolocation.getCurrentPosition(); // getting the location
-    const result = await Preferences.get({ key: 'scores' }); // getting teh already existing scores
+    const result = await Preferences.get({ key: 'scores' }); // getting the already existing scores
 
     let oldScores = [];
-    if (result.value)
+    if (result.value) // scores found
     {
-      oldScores = JSON.parse(result.value);
+      oldScores = JSON.parse(result.value); // parse value from json to array
     }
 
     // newScore array
     const newScore = {score: score,
-      date: new Date().toDateString(),
+      date: new Date().toDateString(), // date on which quiz completed
       location:
       {
         lat: position.coords.latitude,
@@ -37,19 +37,21 @@ export class ScoreService {
     await Preferences.set
     ({
       key: 'scores',
-      value: JSON.stringify(oldScores)
+      value: JSON.stringify(oldScores) // converting array to string
     })
   } // saveScore
 
+  // loading saved scores from local storage
     async getScores(): Promise<any[]>
     {
         const result = await Preferences.get({key: 'scores'});
-        if (result.value)
+        
+        if (result.value) // value found
         {
-          return JSON.parse(result.value);
+          return JSON.parse(result.value); // parsing to js array
         } // if
 
-        else
+        else // value no found
         {
           return [];
         } // else

@@ -38,10 +38,11 @@ export class TriviaService {
       );
   } // getAllQuestions
 
+  //decoding the html entities into readable text
   decodeHtml(text: string): string
   {
     const txt = document.createElement('textarea');
-    txt.innerHTML = text;
+    txt.innerHTML = text; 
     return txt.value;
   } // decodeHtml
 
@@ -49,9 +50,9 @@ export class TriviaService {
   {
     return questions.map(q => ({
       ...q,
-      question: this.decodeHtml(q.question),
-      correct_answer : this.decodeHtml(q.correct_answer),
-      incorrect_answers: q.incorrect_answers.map((a: string) => this.decodeHtml(a))
+      question: this.decodeHtml(q.question), // decoding the question 
+      correct_answer : this.decodeHtml(q.correct_answer), // decoding the correct answer
+      incorrect_answers: q.incorrect_answers.map((a: string) => this.decodeHtml(a)) // decoding the incorrect answer
     }));
   } // decodeQuestions
 }

@@ -31,6 +31,7 @@ export class QuizPage implements OnInit {
   constructor(private triviaService: TriviaService, private httpClient:HttpClient, private router: Router, private scoreService: ScoreService) { }
 
   ngOnInit() {
+    // using the trivia service
     this.triviaService.getAllQuestions().subscribe((data) => {
       const allQuestions = data.easyQuestions.concat(data.mediumHardQuestions); // combining the wuestions
       this.questions = this.triviaService.decodeQuestions(allQuestions);
@@ -60,7 +61,8 @@ export class QuizPage implements OnInit {
   // finsih quiz
   async finishQuiz()
   {
+    // using the score service
     await this.scoreService.saveScore(this.score); // saving the score
-    this.router.navigate(['/result', { score: this.score}]);
+    this.router.navigate(['/result', { score: this.score}]); // nagivating back to the results page
   } // finishQuiz
 }
