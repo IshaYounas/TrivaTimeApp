@@ -73,7 +73,18 @@ ion-button
     margin: 5px;
     border-radius: 12px;
     font-weight: 600;
+    transition: transform 0.2s ease-in-out;
 } // ion-button
+
+ion-button:hover
+{
+    transform: scale(1.03);
+} // ion-button:hover
+
+ion-button:active
+{
+    transform: scale(0.97);
+} // ion-button:active
 
 ion-card
 {
