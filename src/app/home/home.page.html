@@ -7,6 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">Enter Name:</ion-label>
+    <ion-input [(ngModel)]="username" (ionBlur)="saveUser()" ></ion-input>
+  </ion-item>
+ 
+  <div *ngIf="username" style="padding: 10px; font-size: 1.2em;">
+    Welcome to the Trivia Time App, {{username}}
+  </div>
+
   <!-- buttons --> 
   <ion-button routerLink="/quiz">Start Quiz</ion-button>
   <ion-button routerLink="/result">View Scores</ion-button>
