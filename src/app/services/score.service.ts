@@ -22,7 +22,7 @@ export class ScoreService {
 
     // newScore array
     const newScore = {score: score,
-      date: new Date().toLocaleString(), // date on which quiz completed
+      dateTime: new Date().toLocaleString(), // date  and time of when the quiz completed
       time : timeTaken,
       location:
       {
