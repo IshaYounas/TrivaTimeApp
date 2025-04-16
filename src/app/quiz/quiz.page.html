@@ -27,6 +27,8 @@
               </ion-item>
           </ion-radio-group>
 
+          <p>Time left: {{timer}} seconds</p>
+
       <ion-button *ngIf="currentIndex < questions.length - 1" (click)="nextQuestion()" [disabled]="!selectedAnswer">
         Next Question
       </ion-button>

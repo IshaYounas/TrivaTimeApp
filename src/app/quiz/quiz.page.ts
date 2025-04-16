@@ -8,6 +8,7 @@ import { TriviaService } from '../services/trivia.service'; // trivia service
 import { Router } from '@angular/router'; // router
 import { HttpClient } from '@angular/common/http'; // http client
 import { ScoreService } from '../services/score.service'; // score service
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class QuizPage implements OnInit {
   index: any;
   startTime: number = 0;
   elapsedTime: string = "";
+  timer: number = 15;
+  interval: any;
 
   // creating an instance of the trivia service 
   constructor(private triviaService: TriviaService, private httpClient:HttpClient, private router: Router, private scoreService: ScoreService) { }
@@ -40,6 +43,26 @@ export class QuizPage implements OnInit {
       this.startTime = Date.now();
     });
   }
+
+  startTimer()
+  {
+    this.timer = 15;
+    this.interval = setInterval(() => {
+      this.timer--; // decrement the timer
+      if (this.timer == 0)
+      {
+        this.nextQuestion();
+      } // if
+    }, 1000);
+  } // startTimer
+
+  stopTimer()
+  {
+    if (this.interval)
+    {
+      clearInterval(this.interval);
+    } // if
+  } // stopTimer
 
   nextQuestion()
   {  
@@ -59,6 +82,9 @@ export class QuizPage implements OnInit {
     {
       this.isQuizFinished = true;
     } // else
+
+    this.stopTimer();
+    this.startTimer();
   } // nextQuestion
 
   // finsih quiz
