@@ -48,11 +48,24 @@ export class TriviaService {
 
   decodeQuestions(questions: any[]): any[]
   {
-    return questions.map(q => ({
+    const decoded = questions.map(q => ({
       ...q,
       question: this.decodeHtml(q.question), // decoding the question 
       correct_answer : this.decodeHtml(q.correct_answer), // decoding the correct answer
       incorrect_answers: q.incorrect_answers.map((a: string) => this.decodeHtml(a)) // decoding the incorrect answer
     }));
+    return this.shuffleArray(decoded);
   } // decodeQuestions
+
+  // shuffling the questions
+  shuffleArray(shuffle: any[]):any[]
+  {
+    for (let i = shuffle.length - 1; i > 0; i--)
+    {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffle[i], shuffle [j]] = [shuffle[j], shuffle[i]];
+    } // for
+
+    return shuffle;
+  } //shuffleArray
 }
