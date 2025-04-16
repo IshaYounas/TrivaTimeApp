@@ -12,7 +12,7 @@
     <ion-input [(ngModel)]="username" (ionBlur)="saveUser()" ></ion-input>
   </ion-item>
  
-  <div *ngIf="username" style="padding: 10px; font-size: 1.2em;">
+  <div *ngIf="username" class="welcome">
     Welcome to the Trivia Time App, {{username}}
   </div>
 

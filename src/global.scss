@@ -35,3 +35,76 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+:root {
+    --ion-background-color: #f5f0e6;
+    --ion-text-color: #3d3d3d;
+
+    --ion-color-primary: #a65b5b; 
+    --ion-color-secondary: #f0a500; 
+    --ion-color-tertiary: #6a994e; 
+
+    --ion-color-success: #80ed99;
+    --ion-color-warning: #ffb703;
+    --ion-color-danger: #d62828;
+
+    --ion-toolbar-background: linear-gradient(45eg, #f0a500, #a65b5b);
+    --ion-card-background: #fff4e6;
+    --ion-item-background: #ffe8cc;
+} // :root
+
+ion-toolbar
+{
+    background: var(--ion-toolbar-background);
+    color: #8a2be2;
+} // ion-toolbar
+
+ion-title
+{
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4rem;
+} // ion-title
+
+ion-button
+{
+    background: var(--ion-color-primary);
+    color: white;
+    margin: 5px;
+    border-radius: 12px;
+    font-weight: 600;
+} // ion-button
+
+ion-card
+{
+    background: var(--ion-card-background);
+    box-shadow: 5px 20px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin: 12px;
+    padding: 10px;
+} // ion-card
+
+ion-card-title
+{
+    color: var(--ion-color-tertiary);
+    font-size: 1.2rem;
+} // ion-card-title
+
+ion-item
+{
+    background: var(--ion-item-background);
+    border-radius: 8px;
+    margin: 8px;
+    padding: 2px;
+} // ion-item
+
+h2, h4, p, ul, li
+{
+    color: #3d3d3d;
+} // h2, h4, p, ul, li
+
+ion-label
+{
+    font-weight: 500;
+    color: '5a5a5a;'
+} // ion-label

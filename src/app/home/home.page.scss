@@ -25,3 +25,17 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content 
+{
+  --padding-start:  16px;
+  --padding-end:  16px;
+  --padding-top:  20px;
+  --padding-bottom:  20px;
+}
+
+.welcome
+{
+  color: #5a5a5a;
+  padding: 5px;
+}
