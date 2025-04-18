@@ -110,11 +110,11 @@ export class QuizPage implements OnInit {
     const timeTaken = Date.now() - this.startTime;
     this.elapsedTime = (timeTaken / 1000).toFixed(2) + ' seconds';
 
-    const user = JSON.parse(await Preferences.get({ key: 'user' })).value;
-    
+    const result = await Preferences.get({ key: 'user' });
+    const user = result.value ? JSON.parse(result.value) : null;
+
     // using the score service
     await this.scoreService.saveScore(this.score, this.elapsedTime, user.username, user.age); // saving the score
-
-    this.isQuizFinished = true;
+    this.router.navigate(['/result', { score: this.score}]);
   } // finishQuiz
 }
