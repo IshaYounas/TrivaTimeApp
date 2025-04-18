@@ -9,7 +9,7 @@ export class ScoreService {
 
   constructor() { }
 
-  async saveScore(score: number, timeTaken: string = "")
+  async saveScore(score: number, timeTaken: string = "", username: string, age: number)
   {
     const position = await Geolocation.getCurrentPosition(); // getting the location
     const result = await Preferences.get({ key: 'scores' }); // getting the already existing scores
@@ -24,6 +24,8 @@ export class ScoreService {
     const newScore = {score: score,
       dateTime: new Date().toLocaleString(), // date  and time of when the quiz completed
       timeTaken : timeTaken,
+      username: username,
+      age:  age,
       location:
       {
         lat: position.coords.latitude,

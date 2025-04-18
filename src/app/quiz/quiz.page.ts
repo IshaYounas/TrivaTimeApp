@@ -9,6 +9,7 @@ import { Router } from '@angular/router'; // router
 import { HttpClient } from '@angular/common/http'; // http client
 import { ScoreService } from '../services/score.service'; // score service
 import { interval } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
 
 
 @Component({
@@ -109,8 +110,11 @@ export class QuizPage implements OnInit {
     const timeTaken = Date.now() - this.startTime;
     this.elapsedTime = (timeTaken / 1000).toFixed(2) + ' seconds';
 
+    const user = JSON.parse(await Preferences.get({ key: 'user' })).value;
+    
     // using the score service
-    await this.scoreService.saveScore(this.score); // saving the score
-    this.router.navigate(['/result'], { state: { score: this.score } }); // nagivating back to the results page
+    await this.scoreService.saveScore(this.score, this.elapsedTime, user.username, user.age); // saving the score
+
+    this.isQuizFinished = true;
   } // finishQuiz
 }

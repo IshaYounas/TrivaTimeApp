@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   funfact: string = "";
   age: number | null = null;
   isLoggedIn: boolean = false; // default
+  selectedMode: string = "easy" // deafult
 
   constructor(private httpClient: HttpClient, private router: Router) {}
   ngOnInit()
@@ -36,8 +37,9 @@ export class HomePage implements OnInit {
         value: JSON.stringify({username: this.username, age: this.age}),
       });
       this.isLoggedIn = true;
+      this.saveUser()
     } // if
-
+    
     else 
     {
       alert("Please enter username and age");
@@ -56,6 +58,11 @@ export class HomePage implements OnInit {
   saveUser()
   {
     localStorage.setItem("username", this.username);
+
+    if (this.age != null)
+    {
+      localStorage.setItem("age", this.age.toString());
+    } // if
     //console.log(this.username); DEBUG
   } // saveUser
 }
