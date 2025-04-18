@@ -7,7 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <div *ngIf="!isLoggedIn">
     <ion-input [(ngModel)]="username" placeholder="Enter username"></ion-input>
     <ion-input [(ngModel)]="age" placeholder="Enter age" type="number"></ion-input>
@@ -17,15 +16,11 @@
   <div *ngIf="isLoggedIn">
     Welcome to the Trivia Time App, {{username}}
   </div>
- 
 
   <p>Did you know? {{funfact}}</p>
 
-
   <!-- buttons --> 
   <ion-button  routerLink="/about">About</ion-button>
-
-  <ion-button [disabled]="!username || !age" [routerLink]="['/quiz']">Start Quiz</ion-button>
-  <ion-button [disabled]="!username || !age" [routerLink]="['/result']">View Scores</ion-button>
-
+  <ion-button [disabled]="!isLoggedIn" [routerLink]="['/quiz']" >Start Quiz</ion-button>
+  <ion-button [disabled]="!isLoggedIn" [routerLink]="['/result']">View Scores</ion-button>
 </ion-content>

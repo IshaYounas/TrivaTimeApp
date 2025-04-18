@@ -44,16 +44,6 @@ export class HomePage implements OnInit {
     } // else
   } // login
 
-  startQuiz()
-  {
-    this.router.navigate(['/quiz']);
-  } // startQuiz
-
-  viewScores()
-  {
-    this.router.navigate(['/result']);
-  } // viewScores
-
   getFunFact()
   {
     this.httpClient.get('https://uselessfacts.jsph.pl/random.json?language=en').subscribe(
