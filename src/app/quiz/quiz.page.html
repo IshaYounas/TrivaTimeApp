@@ -21,7 +21,7 @@
           <ion-radio-group [(ngModel)]="selectedAnswer">
            
             <!-- joining incorrect & correct answers -->
-            <ion-item *ngFor="let answer of questions[currentIndex]?.incorrect_answers.concat(questions[currentIndex]?.correct_answer); let i of index">
+            <ion-item *ngFor="let answer of questions[currentIndex]?.shuffledAnswers">
               <ion-label> {{answer}} </ion-label>
               <ion-radio slot="start" [value]="answer"></ion-radio>
               </ion-item>

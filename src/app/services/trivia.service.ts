@@ -51,7 +51,7 @@ export class TriviaService {
     const decoded = questions.map(q => ({
       ...q,
       question: this.decodeHtml(q.question), // decoding the question 
-      correct_answer : this.decodeHtml(q.correct_answer), // decoding the correct answer
+      correct_answer: this.decodeHtml(q.correct_answer), // decoding the correct answer
       incorrect_answers: q.incorrect_answers.map((a: string) => this.decodeHtml(a)) // decoding the incorrect answer
     }));
     return this.shuffleArray(decoded);

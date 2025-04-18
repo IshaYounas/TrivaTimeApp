@@ -23,7 +23,7 @@ export class ScoreService {
     // newScore array
     const newScore = {score: score,
       dateTime: new Date().toLocaleString(), // date  and time of when the quiz completed
-      time : timeTaken,
+      timeTaken : timeTaken,
       location:
       {
         lat: position.coords.latitude,

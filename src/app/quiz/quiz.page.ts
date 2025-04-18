@@ -40,7 +40,18 @@ export class QuizPage implements OnInit {
     this.triviaService.getAllQuestions().subscribe((data) => {
       const allQuestions = data.easyQuestions.concat(data.mediumHardQuestions); // combining the wuestions
       this.questions = this.triviaService.decodeQuestions(allQuestions);
+
+      this.questions = this.triviaService.shuffleArray(this.questions);
+     
+      // joining the incorrect and correct answers
+      // calling the shuffleArray method to shuffle the answers
+      this.questions.forEach((q) => {
+        const allAnswers = q.incorrect_answers.concat(q.correct_answer);
+        q.shuffledAnswers = this.triviaService.shuffleArray(allAnswers);
+        }); // forEach
+        
       this.startTime = Date.now();
+      this.startTimer();
     });
   }
 
@@ -48,11 +59,15 @@ export class QuizPage implements OnInit {
   {
     this.timer = 15;
     this.interval = setInterval(() => {
-      this.timer--; // decrement the timer
-      if (this.timer == 0)
+      if (this.timer > 0)
       {
-        this.nextQuestion();
+        this.timer--; // decrement the timer
       } // if
+
+      else
+      {
+          this.nextQuestion();
+      } // else
     }, 1000);
   } // startTimer
 
@@ -96,6 +111,6 @@ export class QuizPage implements OnInit {
 
     // using the score service
     await this.scoreService.saveScore(this.score); // saving the score
-    this.router.navigate(['/result', { score: this.score}]); // nagivating back to the results page
+    this.router.navigate(['/result'], { state: { score: this.score } }); // nagivating back to the results page
   } // finishQuiz
 }
